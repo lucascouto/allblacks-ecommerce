@@ -1,5 +1,7 @@
 <?php
 
+require_once 'vendor/autoload.php';
+
 /**
  * Include RainTpl config files
  */
@@ -11,7 +13,7 @@ spl_autoload_register(function ($class_name) {
 });
 
 /**
- * Include controller files
+ * Include model files
  */
 spl_autoload_register(function ($class_name) {
     $filename = 'models' . DIRECTORY_SEPARATOR . $class_name . '.php';
@@ -20,6 +22,9 @@ spl_autoload_register(function ($class_name) {
     }
 });
 
+/**
+ * Include controller files
+ */
 spl_autoload_register(function ($class_name) {
     $filename = 'controllers' . DIRECTORY_SEPARATOR . $class_name . '.php';
     if (file_exists($filename)) {
@@ -27,6 +32,9 @@ spl_autoload_register(function ($class_name) {
     }
 });
 
+/**
+ * Include database files
+ */
 spl_autoload_register(function ($class_name) {
     $filename = 'DB' . DIRECTORY_SEPARATOR . $class_name . '.php';
     if (file_exists($filename)) {
