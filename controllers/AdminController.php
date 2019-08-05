@@ -2,6 +2,7 @@
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
 class AdminController
 {
@@ -49,7 +50,8 @@ class AdminController
             $index++;
         }
 
-        $writer = new Xlsx($spreadsheet);
-        $writer->save('clientes.xlsx');
+        $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
+
+        $writer->save('php://output');
     }
 }
