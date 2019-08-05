@@ -1,9 +1,8 @@
 <?php
 class Sql
 {
-    const HOSTNAME = '127.0.0.1';
-    const DBNAME = 'allblacks_ecommerce';
-    const DSN = 'mysql:dbname=' . DBNAME . ';host=' . HOSTNAME;
+
+    const DSN = 'mysql:host=127.0.0.1;dbname=allblacks_ecommerce';
     const PASSWORD = 'root';
     const USERNAME = 'root';
     const OPTIONS = null;

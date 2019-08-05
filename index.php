@@ -3,13 +3,17 @@
 use Slim\Slim;
 
 require_once 'vendor/autoload.php';
+require_once 'DB/Sql.php';
 
 $app = new Slim();
 
 $app->config('debug', true);
 
 $app->get('/', function () {
-    echo "<h1>Hey there, all blacks! What's up?</h1>";
+    $sql = new Sql;
+    $results = $sql->select('SELECT * FROM clients');
+
+    echo json_encode($results);
 });
 
 $app->run();
