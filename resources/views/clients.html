@@ -38,3 +38,13 @@
         {/loop}
     </tbody>
 </table>
+
+<form action="/allblacks-ecommerce/admin/clients/report" method="post" enctype="multipart/form-data">
+    <input type="file" name="spreadsheet">
+    <input type="submit" class="btn btn-primary" value="Enviar Planilha" name="send">
+</form>
+
+<form action="/allblacks-ecommerce/admin/clients/reportxml" method="post" enctype="multipart/form-data">
+    <input type="file" name="xml">
+    <input type="submit" class="btn btn-primary" value="Enviar XML" name="send">
+</form>
