@@ -55,8 +55,6 @@ class AdminController
 
     public static function uploadSpreadsheet($file)
     {
-        $clientObj = new Client;
-
         if (!empty($file)) {
             $reader = IOFactory::createReader('Xlsx');
             $reader->setReadDataOnly(true);
@@ -77,15 +75,13 @@ class AdminController
                 for ($column = 1; $column <= $higestColumnIndex; $column++) {
                     $data[$keys[$column - 1]] = $sheet->getCellByColumnAndRow($column, $row)->getValue();
                 }
-                $clientObj->save($data);
+                Client::save($data);
             }
         }
     }
 
     public static function uploadXML($file)
     {
-        $clientObj = new Client;
-
         if (!empty($file)) {
             $xml = new DOMDocument();
             $xml->load($file);
@@ -105,7 +101,7 @@ class AdminController
                     $i++;
                 }
 
-                $clientObj->save($data);
+                Client::save($data);
             }
         }
     }

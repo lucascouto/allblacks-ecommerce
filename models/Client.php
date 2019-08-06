@@ -5,30 +5,32 @@ class Client extends Model
     //List all users
     public static function listAll()
     {
-        $sql = new Sql;
-        return $sql->select('SELECT * FROM clients ORDER BY name');
+        return ClientDAO::listAll();
     }
 
     //insert a user
-    public function save($data)
+    public static function save($data)
     {
-        $this->setData($data);
+        ClientDAO::insert($data);
+    }
 
-        $sql = new Sql;
-        $results = $sql->select('CALL sp_clients_save (:name, :document, :zip_code, :address, 
-                                :neighborhood, :city, :state, :phone, 
-                                :email, :active)', [
-            ':name' => $this->getname(),
-            ':document' => $this->getdocument(),
-            ':zip_code' => $this->getzipcode(),
-            ':address' => $this->getaddress(),
-            ':neighborhood' => $this->getneighborhood(),
-            ':city' => $this->getcity(),
-            ':state' => $this->getstate(),
-            ':phone' => $this->getphone(),
-            ':email' => $this->getemail(),
-            ':active' => $this->getactive()
-        ]);
-        //$this->setData($results[0]);
+    //load a specific client by id
+    public static function loadById($id)
+    {
+        return ClientDAO::loadById($id);
+    }
+
+    //delete a client
+    public static function delete($id)
+    {
+        return ClientDAO::delete($id);
+    }
+
+    //update a client
+    public static function update($id, $data)
+    {
+        if ($client = ClientDAO::loadById($id)) {
+            ClientDAO::update($client, $data);
+        }
     }
 }
