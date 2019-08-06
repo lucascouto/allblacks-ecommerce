@@ -41,6 +41,10 @@ $app->post('/admin/clients/reportxml', function ($req, $res) {
     return $response;
 });
 
+/* ROUTE TO SEND DIRECT MAIL */
+$app->get('/admin/clients/sendmail', function ($req, $res) {
+    AdminController::sendEmail('Promoção AllBlacks!', 'sample');
+});
 
 
 /* ROUTE TO LIST ALL CLIENTS IN A TABLE */

@@ -114,4 +114,20 @@ class AdminController
             }
         }
     }
+
+    public static function sendEmail($subject, $tplName, $data = [])
+    {
+        $clients = Client::listAll();
+
+        $recipients = [];
+        foreach ($clients as $client) {
+            if ($client['email'])
+                array_push($recipients, [$client['email'] => $client['name']]);
+        }
+
+        $mail = new Mailer($recipients, $subject, $tplName, $data);
+        if ($mail->send()) {
+            echo 'ENVIADO COM SUCESSO!';
+        }
+    }
 }
