@@ -2,6 +2,7 @@
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
 class AdminController
 {
@@ -62,23 +63,20 @@ class AdminController
             $spreadsheet = $reader->load($file);
 
             $sheet = $spreadsheet->getActiveSheet();
-
             $highestRow = $sheet->getHighestRow();
+            $higestColumn = $sheet->getHighestColumn();
+            $higestColumnIndex = Coordinate::columnIndexFromString($higestColumn);
+
+            $keys = [
+                'name', 'document', 'zipcode',
+                'address', 'neighborhood', 'city',
+                'state', 'phone', 'email', 'active'
+            ];
 
             for ($row = 2; $row <= $highestRow; $row++) {
-                $data = [
-                    'name' => $sheet->getCellByColumnAndRow(1, $row)->getValue(),
-                    'document' => $sheet->getCellByColumnAndRow(2, $row)->getValue(),
-                    'zipcode' => $sheet->getCellByColumnAndRow(3, $row)->getValue(),
-                    'address' => $sheet->getCellByColumnAndRow(4, $row)->getValue(),
-                    'neighborhood' => $sheet->getCellByColumnAndRow(5, $row)->getValue(),
-                    'city' => $sheet->getCellByColumnAndRow(6, $row)->getValue(),
-                    'state' => $sheet->getCellByColumnAndRow(7, $row)->getValue(),
-                    'phone' => $sheet->getCellByColumnAndRow(8, $row)->getValue(),
-                    'email' => $sheet->getCellByColumnAndRow(9, $row)->getValue(),
-                    'active' => $sheet->getCellByColumnAndRow(10, $row)->getValue()
-                ];
-
+                for ($column = 1; $column <= $higestColumnIndex; $column++) {
+                    $data[$keys[$column - 1]] = $sheet->getCellByColumnAndRow($column, $row)->getValue();
+                }
                 $clientObj->save($data);
             }
         }
@@ -94,21 +92,18 @@ class AdminController
 
             $clients = $xml->getElementsByTagName('torcedor');
 
-
+            $keys = [
+                'name', 'document', 'zipcode',
+                'address', 'neighborhood', 'city',
+                'state', 'phone', 'email', 'active'
+            ];
 
             foreach ($clients as $client) {
-                $data = [
-                    'name' => $client->getAttribute('nome'),
-                    'document' => $client->getAttribute('documento'),
-                    'zipcode' => $client->getAttribute('cep'),
-                    'address' => $client->getAttribute('endereco'),
-                    'neighborhood' => $client->getAttribute('bairro'),
-                    'city' => $client->getAttribute('cidade'),
-                    'state' => $client->getAttribute('uf'),
-                    'phone' => $client->getAttribute('telefone'),
-                    'email' => $client->getAttribute('email'),
-                    'active' => $client->getAttribute('ativo')
-                ];
+                $i = 0;
+                foreach ($client->attributes as $attribute) {
+                    $data[$keys[$i]] = $attribute->nodeValue;
+                    $i++;
+                }
 
                 $clientObj->save($data);
             }
