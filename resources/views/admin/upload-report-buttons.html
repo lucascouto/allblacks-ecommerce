@@ -1,0 +1,21 @@
+{include="admin-header"}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <form action="/allblacks-ecommerce/admin/clients/report" method="post" enctype="multipart/form-data">
+
+                <input id='spreadsheet' type="file" name="spreadsheet">
+                <input type="submit" class="btn btn-primary" value="Enviar Planilha" name="send">
+            </form>
+        </div>
+
+
+        <div class="col-md-6">
+            <form action="/allblacks-ecommerce/admin/clients/reportxml" method="post" enctype="multipart/form-data">
+                <input type="file" name="xml">
+                <input type="submit" class="btn btn-primary" value="Enviar XML" name="send">
+            </form>
+        </div>
+
+    </div>
+</div>

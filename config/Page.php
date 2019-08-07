@@ -10,10 +10,10 @@ class Page
      * When a new instance of Page is created, the TPL is configured
      * and the header.html is called
      */
-    public function __construct()
+    public function __construct($tlp_dir = '/allblacks-ecommerce/resources/views/')
     {
         $config = [
-            'tpl_dir' => $_SERVER['DOCUMENT_ROOT'] . '/allblacks-ecommerce/resources/views/',
+            'tpl_dir' => $_SERVER['DOCUMENT_ROOT'] . $tlp_dir,
             'cache_dir' => $_SERVER['DOCUMENT_ROOT'] . '/allblacks-ecommerce/resources/views-cache/',
             'debug' => false
         ];

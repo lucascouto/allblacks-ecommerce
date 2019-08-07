@@ -37,11 +37,12 @@ $app->get('/admin/logout', function ($req, $res) {
 /* ROUTE TO LIST ALL CLIENTS IN A TABLE */
 $app->get('/admin/clients', function () {
     AdminController::verifyAdminLogin();
-    ClientController::showAll();
+    AdminController::showAll();
 });
 
 /* ROUTE TO DOWNLOAD THE EXCEL FILE */
 $app->get('/admin/clients/report', function ($req, $res) {
+    AdminController::verifyAdminLogin();
     $response = $res->withHeader('Content-Type', 'application/octet-stream; charset=utf-8')
         ->withHeader('Content-Disposition', 'attachment; filename="clientes_relatorio.xlsx"');
     AdminController::generateSpreadsheet();
@@ -50,12 +51,13 @@ $app->get('/admin/clients/report', function ($req, $res) {
 
 /* ROUTE TO SHOW THE SCREEN WITH UPLOAD REPORT BUTTONS */
 $app->get('/admin/upload_report', function ($req, $res) {
+    AdminController::verifyAdminLogin();
     AdminController::showReportUploadButtons();
 });
 
 /* ROUTE TO UPLOAD A REPORT FILE */
 $app->post('/admin/clients/report', function ($req, $res) {
-
+    AdminController::verifyAdminLogin();
     $response = $res->withHeader('Location', '/allblacks-ecommerce/admin/clients');
 
     $spreadsheet = $_FILES['spreadsheet']['tmp_name'];
@@ -66,7 +68,7 @@ $app->post('/admin/clients/report', function ($req, $res) {
 
 /* ROUTE TO UPLOAD A XML REPORT FILE */
 $app->post('/admin/clients/reportxml', function ($req, $res) {
-
+    AdminController::verifyAdminLogin();
     $response = $res->withHeader('Location', '/allblacks-ecommerce/admin/clients');
 
     $xml = $_FILES['xml']['tmp_name'];
@@ -77,13 +79,14 @@ $app->post('/admin/clients/reportxml', function ($req, $res) {
 
 /* ROUTE TO SHOW FORM FOR COMPOSE MAIL */
 $app->get('/admin/clients/sendmail', function ($req, $res) {
+    AdminController::verifyAdminLogin();
     AdminController::showEmailForm();
 });
 
 /* ROUTE TO SEND DIRECT MAIL */
 $app->post('/admin/clients/sendmail', function ($req, $res) {
+    AdminController::verifyAdminLogin();
     $response = $res->withHeader('Location', '/allblacks-ecommerce/admin/clients');
-    print_r($_POST);
     AdminController::sendEmail($_POST['subject'], 'email-template', $_POST);
 
     return $response;
@@ -92,6 +95,7 @@ $app->post('/admin/clients/sendmail', function ($req, $res) {
 
 /* ROUTE TO DELETE A CLIENT */
 $app->get('/admin/clients/{id}/delete', function ($req, $res, $args) {
+    AdminController::verifyAdminLogin();
     $response = $res->withHeader('Location', '/allblacks-ecommerce/admin/clients');
     ClientController::destroy($args['id']);
 
@@ -100,11 +104,13 @@ $app->get('/admin/clients/{id}/delete', function ($req, $res, $args) {
 
 /* ROUTE TO SHOW THE FORM TO UPDATE A CLIENT */
 $app->get('/admin/clients/{id}/edit', function ($req, $res, $args) {
+    AdminController::verifyAdminLogin();
     AdminController::edit($args['id']);
 });
 
 /* ROUTE TO STORE A CLIENT UPDATE */
 $app->post('/admin/clients/{id}/edit', function ($req, $res, $args) {
+    AdminController::verifyAdminLogin();
     $response = $res->withHeader('Location', '/allblacks-ecommerce/admin/clients');
     ClientController::update($args['id'], $_POST);
 
@@ -113,23 +119,24 @@ $app->post('/admin/clients/{id}/edit', function ($req, $res, $args) {
 
 /* ROUTE TO VIEW A SPECIFIC CLIENT */
 $app->get('/admin/clients/{id}', function ($req, $res, $args) {
+    AdminController::verifyAdminLogin();
     AdminController::show($args['id']);
 });
 
 /* ROUTE TO SHOW THE FORM FOR CREATE A NEW CLIENT */
 $app->get('/admin/create-client', function () {
+    AdminController::verifyAdminLogin();
     AdminController::create();
 });
 
 /* ROUTE TO STORE A NEW CLIENT */
 $app->post('/admin/create-client', function ($req, $res) {
+    AdminController::verifyAdminLogin();
     $response = $res->withHeader('Location', '/allblacks-ecommerce/admin/clients');
     ClientController::store($_POST);
 
     return $response;
 });
-
-
 
 
 /********************** ROUTES TO CLIENTS! ************************/
@@ -189,11 +196,13 @@ $app->post('/create-client', function ($req, $res) {
 
 /* ROUTE TO EDIT INFO OF A CLIENT */
 $app->get('/client/{id}/edit', function ($req, $res, $args) {
+    ClientController::verifyClientLogin($args['id']);
     ClientController::edit($args['id']);
 });
 
 /* ROUTE TO STORE THE EDITED INFO OF A CLIENT */
 $app->post('/client/{id}/edit', function ($req, $res, $args) {
+    ClientController::verifyClientLogin($args['id']);
     $response = $res->withHeader('Location', "/allblacks-ecommerce/client/{$args['id']}");
     ClientController::update($args['id'], $_POST);
 
@@ -202,6 +211,7 @@ $app->post('/client/{id}/edit', function ($req, $res, $args) {
 
 /* ROUTE TO DELETE A CLIENT */
 $app->get('/client/{id}/delete', function ($req, $res, $args) {
+    ClientController::verifyClientLogin($args['id']);
     $response = $res->withHeader('Location', '/allblacks-ecommerce/login');
     ClientController::destroy($args['id']);
 

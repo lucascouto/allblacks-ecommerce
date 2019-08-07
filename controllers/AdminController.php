@@ -6,11 +6,22 @@ use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
 class AdminController
 {
+    //list all clients
+    public static function showAll()
+    {
+        $clients = Client::listAll();
+
+        $page = new Page;
+        $page->view('admin/clients', [
+            'clients' => $clients
+        ]);
+    }
+
     //show admin login form
     public static function showLogin()
     {
         $page = new Page;
-        $page->view('admin-login');
+        $page->view('admin/admin-login');
     }
 
     //login a admin
@@ -122,7 +133,7 @@ class AdminController
     public static function showEmailForm()
     {
         $page = new Page;
-        $page->view('email-form');
+        $page->view('admin/email-form');
     }
 
     public static function sendEmail($subject, $tplName, $data = [])
@@ -162,7 +173,7 @@ class AdminController
     public static function showReportUploadButtons()
     {
         $page = new Page;
-        $page->view('upload-report-buttons');
+        $page->view('admin/upload-report-buttons');
     }
 
     //EDIT A CLIENT INFO
@@ -173,7 +184,7 @@ class AdminController
 
 
             $page = new Page;
-            $page->view('admin-client-update', [
+            $page->view('admin/admin-client-update', [
                 'client' => $client
             ]);
         }
@@ -186,7 +197,7 @@ class AdminController
             $client = $clientObj->getValues();
 
             $page = new Page;
-            $page->view('admin-client-detail', [
+            $page->view('admin/admin-client-detail', [
                 'client' => $client
             ]);
         }
@@ -196,6 +207,6 @@ class AdminController
     public static function create()
     {
         $page = new Page;
-        $page->view('admin-client-create');
+        $page->view('admin/admin-client-create');
     }
 }

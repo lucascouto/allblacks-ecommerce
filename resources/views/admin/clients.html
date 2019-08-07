@@ -1,0 +1,37 @@
+{include="admin-header"}
+<div class="container mb-3 mt-3">
+
+    <table id='myTable' class='table table-striped table-bordered' style="width:100%;">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Ativo</th>
+                <th scope="col">Gerenciar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {loop="$clients"}
+            <tr>
+                <td>{$value.name}</td>
+                <td>{$value.document}</td>
+                <td>{$value.phone}</td />
+                <td>{$value.email}</td />
+                <td>{$value.active}</td />
+                <td class="float-right">
+                    <a href="/allblacks-ecommerce/admin/clients/{$value.idclient}" title="mais informações">
+                        <i class="material-icons icon-blue">info</i></a>
+                    <a href="/allblacks-ecommerce/admin/clients/{$value.idclient}/edit" title="editar">
+                        <i class="material-icons icon-yellow">edit</i></a>
+                    <a href="/allblacks-ecommerce/admin/clients/{$value.idclient}/delete" title="excluir">
+                        <i class="material-icons icon-red">delete_forever</i></a>
+                </td>
+            </tr>
+            {/loop}
+        </tbody>
+    </table>
+
+
+</div>

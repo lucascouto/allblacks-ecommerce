@@ -2,15 +2,6 @@
 
 class ClientController
 {
-    public static function showAll()
-    {
-        $clients = Client::listAll();
-
-        $page = new Page;
-        $page->view('clients', [
-            'clients' => $clients
-        ]);
-    }
 
     public static function show($id)
     {
@@ -93,6 +84,6 @@ class ClientController
     public static function showLoginError()
     {
         $page = new Page;
-        $page->view('login-error');
+        $page->view('client-login-error');
     }
 }
