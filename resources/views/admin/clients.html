@@ -25,7 +25,8 @@
                         <i class="material-icons icon-blue">info</i></a>
                     <a href="/allblacks-ecommerce/admin/clients/{$value.idclient}/edit" title="editar">
                         <i class="material-icons icon-yellow">edit</i></a>
-                    <a href="/allblacks-ecommerce/admin/clients/{$value.idclient}/delete" title="excluir">
+                    <a href="/allblacks-ecommerce/admin/clients/{$value.idclient}/delete"
+                        onclick="return confirm('Deseja realmente excluir esse cliente?')" title="excluir">
                         <i class="material-icons icon-red">delete_forever</i></a>
                 </td>
             </tr>

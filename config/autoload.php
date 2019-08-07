@@ -3,7 +3,7 @@
 require_once 'vendor/autoload.php';
 
 /**
- * Include RainTpl config files
+ * Include config files
  */
 spl_autoload_register(function ($class_name) {
     $filename = 'config' . DIRECTORY_SEPARATOR . $class_name . '.php';

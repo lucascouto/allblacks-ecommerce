@@ -1,49 +1,63 @@
 {include="admin-header"}
 <div class="container">
-    <div class="card mt-5 client-info-card">
+    <div class="card mt-5 client-create-card">
         <div class="card-header">
             Cadastrar um novo cliente
         </div>
         <div class="card-body">
 
             <form action="" method="post">
-                <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input type="text" class="form-control" name="name">
+                <div class="row">
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control" required="required" name="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="document">CPF</label>
+                            <input type="text" id="document" required="required" class="form-control" name="document">
+                        </div>
+                        <div class="form-group">
+                            <label for="zipcode">CEP</label>
+                            <input type="text" id="zipcode" required="required" class="form-control" name="zipcode">
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label for="address">Endereço</label>
+                            <input type="text" required="required" class="form-control" name="address">
+                        </div>
+                        <div class="form-group">
+                            <label for="neighborhood">Bairro</label>
+                            <input type="text" required="required" class="form-control" name="neighborhood">
+                        </div>
+                        <div class="row">
+                            <div class="form-group col">
+                                <label for="city">Cidade</label>
+                                <input type="text" required="required" class="form-control" name="city">
+                            </div>
+                            <div class="form-group col">
+                                <label for="state">Estado</label>
+                                <select class="form-control" name="state" id="state">
+                                    {loop="$states"}
+                                    <option value="{$key}">{$value}</option>
+                                    {/loop}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="text" id="phone" class="form-control" name="phone">
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email">
-                    <small class="form-text text-muted">Nós nunca compartilhamos o seu e-mail</small>
-                </div>
-                <div class="form-group">
-                    <label for="document">CPF</label>
-                    <input type="text" class="form-control" name="document">
-                </div>
-                <div class="form-group">
-                    <label for="zipcode">CEP</label>
-                    <input type="text" class="form-control" name="zipcode">
-                </div>
-                <div class="form-group">
-                    <label for="address">Endereço</label>
-                    <input type="text" class="form-control" name="address">
-                </div>
-                <div class="form-group">
-                    <label for="neighborhood">Bairro</label>
-                    <input type="text" class="form-control" name="neighborhood">
-                </div>
-                <div class="form-group">
-                    <label for="city">cidade</label>
-                    <input type="text" class="form-control" name="city">
-                </div>
-                <div class="form-group">
-                    <label for="state">UF</label>
-                    <input type="text" class="form-control" name="state">
-                </div>
-                <div class="form-group">
-                    <label for="phone">Telefone</label>
-                    <input type="text" class="form-control" name="phone">
-                </div>
+
+
 
                 <input type="hidden" name="active" value="SIM">
 

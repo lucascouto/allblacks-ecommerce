@@ -52,7 +52,9 @@
                 <dd class="col-sm-9">{$client.email}</dd>
             </dl>
             <div class="float-right">
-                <a href="/allblacks-ecommerce/client/{$client.idclient}/delete" class="btn btn-danger">Deletar Conta</a>
+                <a href="/allblacks-ecommerce/client/{$client.idclient}/delete"
+                    onclick="return confirm('Deseja realmente excluir sua conta?')" class="btn btn-danger">Deletar
+                    Conta</a>
                 <a href="/allblacks-ecommerce/client/{$client.idclient}/edit" class="btn btn-info">Editar
                     Informações</a>
             </div>

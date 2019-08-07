@@ -18,7 +18,9 @@ class ClientController
     public static function create()
     {
         $page = new Page;
-        $page->view('client-create');
+        $page->view('client-create', [
+            'states' => States::getStatesList()
+        ]);
     }
 
     public static function destroy($id)

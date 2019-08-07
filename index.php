@@ -133,8 +133,8 @@ $app->get('/admin/create-client', function () {
 $app->post('/admin/create-client', function ($req, $res) {
     AdminController::verifyAdminLogin();
     $response = $res->withHeader('Location', '/allblacks-ecommerce/admin/clients');
-    ClientController::store($_POST);
 
+    ClientController::store($_POST);
     return $response;
 });
 

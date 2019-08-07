@@ -207,6 +207,8 @@ class AdminController
     public static function create()
     {
         $page = new Page;
-        $page->view('admin/admin-client-create');
+        $page->view('admin/admin-client-create', [
+            'states' => States::getStatesList()
+        ]);
     }
 }

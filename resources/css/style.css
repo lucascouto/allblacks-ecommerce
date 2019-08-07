@@ -102,6 +102,10 @@ body {
 	margin: 0 auto;
 }
 
+.client-create-card {
+	margin: 0 auto;
+}
+
 i.icon-red {
 	color: #dc3545;
 }
