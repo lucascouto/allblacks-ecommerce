@@ -90,4 +90,27 @@ class ClientDAO
             ':ID' => $client->getidclient()
         ]);
     }
+
+    public static function login($login, $password)
+    {
+
+        $sql = new Sql;
+        /* 
+            To simulate a login system, it was used  the 'document' field 
+            as login and the 'zip_code' field as password
+        */
+        $results = $sql->select('SELECT * FROM clients WHERE document = :LOGIN AND zip_code = :PASSWORD', [
+            ':LOGIN' => $login,
+            ':PASSWORD' => $password
+        ]);
+
+        if (count($results) > 0) {
+            $client = new Client;
+            $client->setData($results[0]);
+            $_SESSION['Client'] = $client->getValues();
+            return $client;
+        } else {
+            return false;
+        }
+    }
 }

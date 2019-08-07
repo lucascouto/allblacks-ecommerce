@@ -37,37 +37,23 @@
     </div>
 </nav>
 
-<div class="container mb-3 mt-3">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="/allblacks-ecommerce/admin/clients/report" method="post" enctype="multipart/form-data">
 
-    <table id='myTable' class='table table-striped table-bordered' style="width:100%;">
-        <thead>
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">CPF</th>
-                <th scope="col">Telefone</th>
-                <th scope="col">E-mail</th>
-                <th scope="col">Ativo</th>
-                <th scope="col">Gerenciar</th>
-            </tr>
-        </thead>
-        <tbody>
-            {loop="$clients"}
-            <tr>
-                <td><a href="#">{$value.name}</a></td>
-                <td>{$value.document}</td>
-                <td>{$value.phone}</td />
-                <td>{$value.email}</td />
-                <td>{$value.active}</td />
-                <td class="float-right">
-                    <a href="/allblacks-ecommerce/admin/clients/{$value.idclient}/edit" title="editar">
-                        <i class="material-icons icon-yellow">edit</i></a>
-                    <a href="/allblacks-ecommerce/admin/clients/{$value.idclient}/delete" title="excluir">
-                        <i class="material-icons icon-red">delete_forever</i></a>
-                </td>
-            </tr>
-            {/loop}
-        </tbody>
-    </table>
+                <input id='spreadsheet' type="file" name="spreadsheet">
+                <input type="submit" class="btn btn-primary" value="Enviar Planilha" name="send">
+            </form>
+        </div>
 
 
+        <div class="col-md-6">
+            <form action="/allblacks-ecommerce/admin/clients/reportxml" method="post" enctype="multipart/form-data">
+                <input type="file" name="xml">
+                <input type="submit" class="btn btn-primary" value="Enviar XML" name="send">
+            </form>
+        </div>
+
+    </div>
 </div>

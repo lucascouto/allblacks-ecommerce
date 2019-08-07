@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="/allblacks-ecommerce/resources/img/allblacks-logo.png" width="30" height="30" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/allblacks-ecommerce/admin/clients/report"><i
+                        class="material-icons">cloud_download</i> Baixar planilha do Excel</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="material-icons">cloud_upload</i> Enviar Relatório</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/allblacks-ecommerce/admin/clients/sendmail"><i
+                        class="material-icons">mail</i> Enviar
+                    e-mail</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="material-icons">perm_identity</i> Cadastrar Usuário</a>
+            </li>
+
+
+        </ul>
+
+        <a href="/allblacks-ecommerce/admin/logout" class="btn btn-outline-info my-2 my-sm-0">Sair</a>
+
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card mt-5 client-info-card">
+        <div class="card-header">
+            Enviar mala direta
+        </div>
+        <div class="card-body">
+
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="name">Assunto</label>
+                    <input type="text" class="form-control" name="subject">
+                </div>
+                <div class="form-group">
+                    <label for="name">Título do banner</label>
+                    <input type="text" class="form-control" name="bannerTitle">
+                </div>
+                <div class="form-group">
+                    <label for="email">Título do corpo da mensagem</label>
+                    <input type="text" class="form-control" name="bodyTitle">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Corpo da mensagem</label>
+                    <textarea class="form-control" name="message"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Post scriptum</label>
+                    <input type="text" class="form-control" name="postScriptum">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Assinatura</label>
+                    <input type="text" class="form-control" name="signature">
+                </div>
+
+                <div class="float-right">
+                    <a href="/allblacks-ecommerce/admin/clients" class="btn btn-danger">Cancelar</a>
+                    <button type="submit" class="btn btn-info">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

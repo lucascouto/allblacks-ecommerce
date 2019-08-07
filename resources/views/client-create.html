@@ -1,47 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="/allblacks-ecommerce/resources/img/allblacks-logo.png" width="30" height="30" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Lista de Desejos</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Meu Carrinho</a>
+            </li>
+        </ul>
+
+        <a href="/allblacks-ecommerce/" class="btn btn-outline-info my-2 my-sm-0">Voltar ao início</a>
+
+    </div>
+</nav>
+
 <div class="container">
-    <div class="row">
-        <form action="" method="post" class="col-md-6">
-            <div class="form-group">
-                <label for="name">Nome</label>
-                <input type="text" class="form-control" name="name" placeholder="Nome Completo">
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" name="email">
-                <small class="form-text text-muted">Nós nunca compartilhamos o seu e-mail</small>
-            </div>
-            <div class="form-group">
-                <label for="document">CPF</label>
-                <input type="text" class="form-control" name="document">
-            </div>
-            <div class="form-group">
-                <label for="zipcode">CEP</label>
-                <input type="text" class="form-control" name="zipcode">
-            </div>
-            <div class="form-group">
-                <label for="address">Endereço</label>
-                <input type="text" class="form-control" name="address">
-            </div>
-            <div class="form-group">
-                <label for="neighborhood">Bairro</label>
-                <input type="text" class="form-control" name="neighborhood">
-            </div>
-            <div class="form-group">
-                <label for="city">cidade</label>
-                <input type="text" class="form-control" name="city">
-            </div>
-            <div class="form-group">
-                <label for="state">UF</label>
-                <input type="text" class="form-control" name="state">
-            </div>
-            <div class="form-group">
-                <label for="phone">Telefone</label>
-                <input type="text" class="form-control" name="phone">
-            </div>
+    <div class="card mt-5 client-info-card">
+        <div class="card-header">
+            Torna-se um sócio!
+        </div>
+        <div class="card-body">
 
-            <input type="hidden" name="active" value="SIM">
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email">
+                    <small class="form-text text-muted">Nós nunca compartilhamos o seu e-mail</small>
+                </div>
+                <div class="form-group">
+                    <label for="document">CPF</label>
+                    <input type="text" class="form-control" name="document">
+                </div>
+                <div class="form-group">
+                    <label for="zipcode">CEP</label>
+                    <input type="text" class="form-control" name="zipcode">
+                </div>
+                <div class="form-group">
+                    <label for="address">Endereço</label>
+                    <input type="text" class="form-control" name="address">
+                </div>
+                <div class="form-group">
+                    <label for="neighborhood">Bairro</label>
+                    <input type="text" class="form-control" name="neighborhood">
+                </div>
+                <div class="form-group">
+                    <label for="city">cidade</label>
+                    <input type="text" class="form-control" name="city">
+                </div>
+                <div class="form-group">
+                    <label for="state">UF</label>
+                    <input type="text" class="form-control" name="state">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="text" class="form-control" name="phone">
+                </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+                <input type="hidden" name="active" value="SIM">
+
+                <div class="float-right">
+                    <a href="/allblacks-ecommerce/client/{$client.idclient}" class="btn btn-danger">Cancelar</a>
+                    <button type="submit" class="btn btn-info">Cadastrar</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

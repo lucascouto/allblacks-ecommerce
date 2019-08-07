@@ -6,6 +6,19 @@ use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
 class AdminController
 {
+    //show admin login form
+    public static function showLogin()
+    {
+        $page = new Page;
+        $page->view('admin-login');
+    }
+
+    //login a admin
+    public static function login($login, $password)
+    {
+        return Admin::login($login, $password);
+    }
+
     public static function generateSpreadsheet()
     {
         $clients = Client::listAll();
@@ -106,6 +119,12 @@ class AdminController
         }
     }
 
+    public static function showEmailForm()
+    {
+        $page = new Page;
+        $page->view('email-form');
+    }
+
     public static function sendEmail($subject, $tplName, $data = [])
     {
         $clients = Client::listAll();
@@ -120,5 +139,29 @@ class AdminController
         if ($mail->send()) {
             echo 'ENVIADO COM SUCESSO!';
         }
+    }
+
+    public static function verifyAdminLogin()
+    {
+        if (
+            !isset($_SESSION['Admin'])
+            || !$_SESSION['Admin']
+            || !(int) $_SESSION['Admin']['idadmin'] > 0
+        ) {
+            header('Location: /allblacks-ecommerce/admin');
+            exit;
+        }
+    }
+
+    //logout admin
+    public static function logout()
+    {
+        $_SESSION['Admin'] = NULL;
+    }
+
+    public static function showReportUploadButtons()
+    {
+        $page = new Page;
+        $page->view('upload-report-buttons');
     }
 }

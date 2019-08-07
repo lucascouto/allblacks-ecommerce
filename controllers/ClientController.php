@@ -58,4 +58,41 @@ class ClientController
     {
         Client::save($data);
     }
+
+    public static function showLogin()
+    {
+        $page = new Page;
+        $page->view('client-login');
+    }
+
+    public static function login($login, $password)
+    {
+        return Client::login($login, $password);
+    }
+
+    public static function verifyClientLogin($id)
+    {
+        if (
+            !isset($_SESSION['Client'])
+            || !$_SESSION['Client']
+            || !(int) $_SESSION['Client']['idclient'] > 0
+        ) {
+            header('Location: /allblacks-ecommerce');
+            exit;
+        } else if ($id != $_SESSION['Client']['idclient']) {
+            header('Location: /allblacks-ecommerce/client/' . $_SESSION['Client']['idclient']);
+            exit;
+        }
+    }
+
+    public static function logout()
+    {
+        $_SESSION['Client'] = NULL;
+    }
+
+    public static function showLoginError()
+    {
+        $page = new Page;
+        $page->view('login-error');
+    }
 }

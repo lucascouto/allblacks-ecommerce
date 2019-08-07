@@ -33,4 +33,10 @@ class Client extends Model
             ClientDAO::update($client, $data);
         }
     }
+
+    //login a client
+    public static function login($login, $password)
+    {
+        return ClientDAO::login($login, $password);
+    }
 }
