@@ -9,13 +9,7 @@ Esse projeto visa simular um sistema de CRUD de clientes em uma loja virtual da 
 `$ git clone https://github.com/lucascouto/allblacks-ecommerce.git`
 
 
- ### Importe o Banco de Dados
- * Sugiro baixar o [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) para facilitar o processo de importação do banco
- * Uma vez baixado o MySQL Workbench, abra ele e acesse: 
-  * server > data import
-  * escolha a opção 'import from self-contained file'
-  * selecione o arquivo localizado em '/allblacks-ecommerce/DB/dumps/dumpAllBlacks.sql'
-  * 'start import'
+ 
 
 ### Prepare o ambiente de desenvolvimento
 * É necessário ter instalado na sua máquina uma ambiente de desenvolvimento PHP (APACHE + MYSQL + PHP). Existem inúmeras opções na web, como por exemplo o XAMPP, o LAMPP, O MAMP...
@@ -24,6 +18,14 @@ Esse projeto visa simular um sistema de CRUD de clientes em uma loja virtual da 
 
 * Acesse o projeto do seu localhost: `http://localhost:8000/allblacks-ecommerce`
   * (a porta pode variar de acordo com as configurações do seu servidor)
+  
+ ### Importe o Banco de Dados
+ * Sugiro baixar o [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) para facilitar o processo de importação do banco
+ * Uma vez baixado o MySQL Workbench, abra ele e acesse: 
+  * server > data import
+  * escolha a opção 'import from self-contained file'
+  * selecione o arquivo localizado em '/allblacks-ecommerce/DB/dumps/dumpAllBlacks.sql'
+  * 'start import'
  
  ### Acessar o sistema
  * Para acessar a pagina dos clientes: `http://localhost:8000/allblacks-ecommerce`
