@@ -4,7 +4,7 @@ class ClientDAO
     public static function listAll()
     {
         $sql = new Sql;
-        return $sql->select('SELECT * FROM clients ORDER BY dt_created desc');
+        return $sql->select('SELECT * FROM clients');
     }
 
     public static function loadById($id)
@@ -31,7 +31,9 @@ class ClientDAO
         $client->setData($data);
 
         $sql = new Sql;
-        $sql->select('CALL sp_clients_save (:name, :document, :zip_code, :address, 
+        $sql->select('INSERT INTO clients (name, document, zip_code, address, 
+                                neighborhood, city, state, phone, 
+                                email, active) VALUES (:name, :document, :zip_code, :address, 
                                 :neighborhood, :city, :state, :phone, 
                                 :email, :active)', [
             ':name' => $client->getname(),
