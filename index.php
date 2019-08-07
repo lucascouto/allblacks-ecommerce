@@ -90,7 +90,6 @@ $app->post('/admin/clients/sendmail', function ($req, $res) {
 });
 
 
-
 /* ROUTE TO DELETE A CLIENT */
 $app->get('/admin/clients/{id}/delete', function ($req, $res, $args) {
     $response = $res->withHeader('Location', '/allblacks-ecommerce/admin/clients');
@@ -101,7 +100,7 @@ $app->get('/admin/clients/{id}/delete', function ($req, $res, $args) {
 
 /* ROUTE TO SHOW THE FORM TO UPDATE A CLIENT */
 $app->get('/admin/clients/{id}/edit', function ($req, $res, $args) {
-    ClientController::edit($args['id']);
+    AdminController::edit($args['id']);
 });
 
 /* ROUTE TO STORE A CLIENT UPDATE */
@@ -114,8 +113,22 @@ $app->post('/admin/clients/{id}/edit', function ($req, $res, $args) {
 
 /* ROUTE TO VIEW A SPECIFIC CLIENT */
 $app->get('/admin/clients/{id}', function ($req, $res, $args) {
-    ClientController::show($args['id']);
+    AdminController::show($args['id']);
 });
+
+/* ROUTE TO SHOW THE FORM FOR CREATE A NEW CLIENT */
+$app->get('/admin/create-client', function () {
+    AdminController::create();
+});
+
+/* ROUTE TO STORE A NEW CLIENT */
+$app->post('/admin/create-client', function ($req, $res) {
+    $response = $res->withHeader('Location', '/allblacks-ecommerce/admin/clients');
+    ClientController::store($_POST);
+
+    return $response;
+});
+
 
 
 

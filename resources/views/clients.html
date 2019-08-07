@@ -26,7 +26,8 @@
                     e-mail</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="material-icons">perm_identity</i> Cadastrar Usuário</a>
+                <a class="nav-link" href="/allblacks-ecommerce/admin/create-client"><i
+                        class="material-icons">perm_identity</i> Cadastrar Usuário</a>
             </li>
 
 
@@ -53,12 +54,14 @@
         <tbody>
             {loop="$clients"}
             <tr>
-                <td><a href="#">{$value.name}</a></td>
+                <td>{$value.name}</td>
                 <td>{$value.document}</td>
                 <td>{$value.phone}</td />
                 <td>{$value.email}</td />
                 <td>{$value.active}</td />
                 <td class="float-right">
+                    <a href="/allblacks-ecommerce/admin/clients/{$value.idclient}" title="mais informações">
+                        <i class="material-icons icon-blue">info</i></a>
                     <a href="/allblacks-ecommerce/admin/clients/{$value.idclient}/edit" title="editar">
                         <i class="material-icons icon-yellow">edit</i></a>
                     <a href="/allblacks-ecommerce/admin/clients/{$value.idclient}/delete" title="excluir">

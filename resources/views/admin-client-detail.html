@@ -37,24 +37,38 @@
 
     </div>
 </nav>
-
 <div class="container">
-    <div class="row mt-5">
-        <div class="col-md-6">
-            <form action="/allblacks-ecommerce/admin/clients/report" method="post" enctype="multipart/form-data">
-
-                <input id='spreadsheet' type="file" name="spreadsheet">
-                <input type="submit" class="btn btn-primary" value="Enviar Planilha" name="send">
-            </form>
+    <div class="card mt-5 client-info-card">
+        <div class="card-header">
+            Informações do torcedor
         </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Nome</dt>
+                <dd class="col-sm-9">{$client.name}</dd>
+                <dt class="col-sm-3">CPF</dt>
+                <dd class="col-sm-9">{$client.document}</dd>
+                <dt class="col-sm-3">CEP</dt>
+                <dd class="col-sm-9">{$client.zip_code}</dd>
+                <dt class="col-sm-3">Endereço</dt>
+                <dd class="col-sm-9">{$client.address}</dd>
+                <dt class="col-sm-3">Bairro</dt>
+                <dd class="col-sm-9">{$client.neighborhood}</dd>
+                <dt class="col-sm-3">Cidade</dt>
+                <dd class="col-sm-9">{$client.city}</dd>
+                <dt class="col-sm-3">Estado</dt>
+                <dd class="col-sm-9">{$client.state}</dd>
+                <dt class="col-sm-3">Telefone</dt>
+                <dd class="col-sm-9">{$client.phone}</dd>
+                <dt class="col-sm-3">E-mail</dt>
+                <dd class="col-sm-9">{$client.email}</dd>
+            </dl>
+            <div class="float-right">
+                <a href="/allblacks-ecommerce/client/{$client.idclient}/delete" class="btn btn-danger">Deletar Conta</a>
+                <a href="/allblacks-ecommerce/client/{$client.idclient}/edit" class="btn btn-info">Editar
+                    Informações</a>
+            </div>
 
-
-        <div class="col-md-6">
-            <form action="/allblacks-ecommerce/admin/clients/reportxml" method="post" enctype="multipart/form-data">
-                <input type="file" name="xml">
-                <input type="submit" class="btn btn-primary" value="Enviar XML" name="send">
-            </form>
         </div>
-
     </div>
 </div>

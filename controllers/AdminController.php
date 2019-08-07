@@ -164,4 +164,38 @@ class AdminController
         $page = new Page;
         $page->view('upload-report-buttons');
     }
+
+    //EDIT A CLIENT INFO
+    public static function edit($id)
+    {
+        if ($clientObj = Client::loadById($id)) {
+            $client = $clientObj->getValues();
+
+
+            $page = new Page;
+            $page->view('admin-client-update', [
+                'client' => $client
+            ]);
+        }
+    }
+
+    //SHOW A SPECIFIC CLIENT
+    public static function show($id)
+    {
+        if ($clientObj = Client::loadById($id)) {
+            $client = $clientObj->getValues();
+
+            $page = new Page;
+            $page->view('admin-client-detail', [
+                'client' => $client
+            ]);
+        }
+    }
+
+    //SHOW THE FORM TO CREATE A NEW CLIENT
+    public static function create()
+    {
+        $page = new Page;
+        $page->view('admin-client-create');
+    }
 }

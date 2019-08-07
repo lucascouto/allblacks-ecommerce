@@ -4,7 +4,7 @@ class ClientDAO
     public static function listAll()
     {
         $sql = new Sql;
-        return $sql->select('SELECT * FROM clients ORDER BY name');
+        return $sql->select('SELECT * FROM clients ORDER BY dt_created desc');
     }
 
     public static function loadById($id)
