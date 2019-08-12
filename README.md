@@ -42,4 +42,4 @@ Esse projeto visa simular um sistema de CRUD de clientes em uma loja virtual da 
     * login: admin
     * senha: admin
   
-  * Obs.: a porta de acesso pode mudar de acordo com as configurações do seu servidor
+  * Obs.: a porta de acesso `:8000` pode mudar de acordo com as configurações do seu servidor
