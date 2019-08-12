@@ -10,13 +10,14 @@ class Sql
 
     public function __construct()
     {
-        $dbconfig = file('../dbconfig');
+        $dbconfig = file($_SERVER['DOCUMENT_ROOT'] . '/allblacks-ecommerce/dbconfig');
         
         $this->dsn = str_replace(PHP_EOL, '', substr($dbconfig[0], 4));
         $this->username = str_replace(PHP_EOL, '', substr($dbconfig[1], 9));
         $this->password =str_replace(PHP_EOL, '', substr($dbconfig[2], 9));
-
+       
         $this->conn = new PDO($this->dsn, $this->username, $this->password);
+    
     }
 
     private function setParams($stmt, $key, $value)
