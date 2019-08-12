@@ -8,7 +8,10 @@ Esse projeto visa simular um sistema de CRUD de clientes em uma loja virtual da 
 ### Clone o projeto para a sua máquina
 `$ git clone https://github.com/lucascouto/allblacks-ecommerce.git`
 
+### Instale as dependências com o composer
+`$ composer install`
 
+[Clique aqui](https://getcomposer.org/download/) caso ainda não possua o composer instalado na sua máquina
  
 
 ### Prepare o ambiente de desenvolvimento
