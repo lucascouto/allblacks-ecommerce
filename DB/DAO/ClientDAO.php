@@ -68,7 +68,7 @@ class ClientDAO
 
         $sql = new Sql;
 
-        $client = $sql->select("UPDATE clients SET name = :NAME, 
+        $client = $sql->query("UPDATE clients SET name = :NAME, 
                                 document = :DOCUMENT, 
                                 zip_code = :ZIPCODE, 
                                 address = :ADDRESS, 
