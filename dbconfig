@@ -1,3 +1,9 @@
-dsn=mysql:host=127.0.0.1;dbname=allblacks_ecommerce
+dbtype=mysql
+host=localhost
+port=
+dbname=allblacks_ecommerce
 username=root
-password=
+password=root
+
+
+#IF DATABASE PORT IS 3306 LEAVE IT BLANK!

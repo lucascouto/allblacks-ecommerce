@@ -1,23 +1,35 @@
 <?php
 class Sql
 {
-
+    private $dbtype;
+    private $dbname;
+    private $host;
+    private $port;
     private $dsn;
     private $password;
     private $username;
-   
+
     private $conn;
 
     public function __construct()
     {
         $dbconfig = file($_SERVER['DOCUMENT_ROOT'] . '/allblacks-ecommerce/dbconfig');
-        
-        $this->dsn = str_replace(PHP_EOL, '', substr($dbconfig[0], 4));
-        $this->username = str_replace(PHP_EOL, '', substr($dbconfig[1], 9));
-        $this->password =str_replace(PHP_EOL, '', substr($dbconfig[2], 9));
-       
+
+        $this->dbtype = str_replace(PHP_EOL, '', substr($dbconfig[0], 7));
+        $this->host = str_replace(PHP_EOL, '', substr($dbconfig[1], 5));
+        $this->port = str_replace(PHP_EOL, '', substr($dbconfig[2], 5));
+        $this->dbname = str_replace(PHP_EOL, '', substr($dbconfig[3], 7));
+
+        //CALL THE APPROPRIATE DSN ACCORDING WITH DATABASE TYPE
+        if ($this->dbtype == 'mysql')
+            $this->dsn = 'mysql:host=' . $this->host . ';port=' . $this->port . ';dbname=' . $this->dbname;
+        elseif ($this->dbtype == 'sqlsrv')
+            $this->dsn = 'sqlsrv:Server=' . $this->host . ',' . $this->port . ';Database=' . $this->dbname;
+
+        $this->username = str_replace(PHP_EOL, '', substr($dbconfig[4], 9));
+        $this->password = str_replace(PHP_EOL, '', substr($dbconfig[5], 9));
+
         $this->conn = new PDO($this->dsn, $this->username, $this->password);
-    
     }
 
     private function setParams($stmt, $key, $value)
