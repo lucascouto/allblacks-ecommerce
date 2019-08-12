@@ -2,16 +2,21 @@
 class Sql
 {
 
-    const DSN = 'mysql:host=127.0.0.1;dbname=allblacks_ecommerce';
-    const PASSWORD = 'root';
-    const USERNAME = 'root';
-    const OPTIONS = null;
-
+    private $dsn;
+    private $password;
+    private $username;
+   
     private $conn;
 
     public function __construct()
     {
-        $this->conn = new PDO(Sql::DSN, sql::USERNAME, sql::PASSWORD, sql::OPTIONS);
+        $dbconfig = file('../dbconfig');
+        
+        $this->dsn = str_replace(PHP_EOL, '', substr($dbconfig[0], 4));
+        $this->username = str_replace(PHP_EOL, '', substr($dbconfig[1], 9));
+        $this->password =str_replace(PHP_EOL, '', substr($dbconfig[2], 9));
+
+        $this->conn = new PDO($this->dsn, $this->username, $this->password);
     }
 
     private function setParams($stmt, $key, $value)

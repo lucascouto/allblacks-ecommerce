@@ -34,7 +34,7 @@ class Page
 
     /**
      * Renders a view template
-     * @param string $name the name of the templante
+     * @param string $name the name of the template
      * @param array $data and associative array with the data to pass to the view template
      * 
      * @return mixed return the template rendered
@@ -49,7 +49,7 @@ class Page
      * When the object is destructed, the footer is rendered
      */
     public function __destruct()
-    {
+    {   
         $this->tpl->draw('footer');
     }
 }

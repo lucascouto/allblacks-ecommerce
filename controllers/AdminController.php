@@ -12,7 +12,7 @@ class AdminController
         $clients = Client::listAll();
 
         $page = new Page;
-        $page->view('admin/clients', [
+        $page->view('admin' . DIRECTORY_SEPARATOR . 'clients', [
             'clients' => $clients
         ]);
     }
@@ -21,7 +21,7 @@ class AdminController
     public static function showLogin()
     {
         $page = new Page;
-        $page->view('admin/admin-login');
+        $page->view('admin' . DIRECTORY_SEPARATOR . 'admin-login');
     }
 
     //login a admin
@@ -133,7 +133,7 @@ class AdminController
     public static function showEmailForm()
     {
         $page = new Page;
-        $page->view('admin/email-form');
+        $page->view('admin' . DIRECTORY_SEPARATOR . 'email-form');
     }
 
     public static function sendEmail($subject, $tplName, $data = [])
@@ -173,7 +173,7 @@ class AdminController
     public static function showReportUploadButtons()
     {
         $page = new Page;
-        $page->view('admin/upload-report-buttons');
+        $page->view('admin' . DIRECTORY_SEPARATOR .  'upload-report-buttons');
     }
 
     //EDIT A CLIENT INFO
@@ -184,7 +184,7 @@ class AdminController
 
 
             $page = new Page;
-            $page->view('admin/admin-client-update', [
+            $page->view('admin' . DIRECTORY_SEPARATOR . 'admin-client-update', [
                 'client' => $client
             ]);
         }
@@ -197,7 +197,7 @@ class AdminController
             $client = $clientObj->getValues();
 
             $page = new Page;
-            $page->view('admin/admin-client-detail', [
+            $page->view('admin' . DIRECTORY_SEPARATOR . 'admin-client-detail', [
                 'client' => $client
             ]);
         }
@@ -207,7 +207,7 @@ class AdminController
     public static function create()
     {
         $page = new Page;
-        $page->view('admin/admin-client-create', [
+        $page->view('admin' . DIRECTORY_SEPARATOR . 'admin-client-create', [
             'states' => States::getStatesList()
         ]);
     }
