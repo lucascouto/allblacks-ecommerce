@@ -5,32 +5,35 @@ Esse projeto visa simular um sistema de CRUD de clientes em uma loja virtual da 
 
 ## Como rodar o projeto
 
-### Clone o projeto para a sua máquina
-`$ git clone https://github.com/lucascouto/allblacks-ecommerce.git`
+### Prepare o ambiente de desenvolvimento
+* É necessário ter instalado na sua máquina uma ambiente de desenvolvimento PHP (APACHE + MYSQL + PHP). Existem inúmeras opções na web, como por exemplo o [XAMPP](https://www.apachefriends.org/pt_br/download.html), o [MAMP](https://www.mamp.info/en/downloads/)...
+
+* Uma vez instalado, clone o projeto para o diretório raiz do servidor (htdocs, por exemplo):
+   
+   `$ git clone https://github.com/lucascouto/allblacks-ecommerce.git`
+   
+   `$ cd allblacks-ecommerce`
 
 ### Instale as dependências com o composer
-`$ composer install`
+   
+   `$ composer install`
 
-[Clique aqui](https://getcomposer.org/download/) caso ainda não possua o composer instalado na sua máquina
+   [Clique aqui](https://getcomposer.org/download/) caso ainda não possua o composer instalado na sua máquina
  
-
-### Prepare o ambiente de desenvolvimento
-* É necessário ter instalado na sua máquina uma ambiente de desenvolvimento PHP (APACHE + MYSQL + PHP). Existem inúmeras opções na web, como por exemplo o XAMPP, o LAMPP, O MAMP...
-
-* Uma vez instalado, mova a pasta do projeto para o diretório raiz do servidor (htdocs, por exemplo)
-
-* Acesse o projeto do seu localhost: `http://localhost:8000/allblacks-ecommerce`
-  * (a porta pode variar de acordo com as configurações do seu servidor)
-  
- ### Importe o Banco de Dados
+### Importe o Banco de Dados
  * Sugiro baixar o [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) para facilitar o processo de importação do banco
  * Uma vez baixado o MySQL Workbench, abra ele e acesse: 
   * server > data import
   * escolha a opção 'import from self-contained file'
   * selecione o arquivo localizado em '/allblacks-ecommerce/DB/dumps/dumpAllBlacks.sql'
   * 'start import'
+
+
+### Configure username e password do banco de dados
+  Configure corretamente o username e o password do seu banco de dados no arquivo `dbconfig` do projeto
  
- ### Acessar o sistema
+ 
+### Acessar o sistema
  * Para acessar a pagina dos clientes: `http://localhost:8000/allblacks-ecommerce`
     * login: qualquer CPF da base de dados
     * senha: CEP correspondente ao CPF
