@@ -33,7 +33,7 @@ Esse projeto visa simular um sistema de CRUD de clientes em uma loja virtual da 
   Configure corretamente o username e o password do seu banco de dados no arquivo `dbconfig` do projeto
  
  
-### Acessar o sistema
+### Acesse o sistema
  * Para acessar a pagina dos clientes: `http://localhost:8000/allblacks-ecommerce`
     * login: qualquer CPF da base de dados
     * senha: CEP correspondente ao CPF
@@ -41,3 +41,5 @@ Esse projeto visa simular um sistema de CRUD de clientes em uma loja virtual da 
  * Para acessar a pagina do administrador: `http://localhost:8000/allblacks-ecommerce/admin`
     * login: admin
     * senha: admin
+  
+  * Obs.: a porta de acesso pode mudar de acordo com as configurações do seu servidor
