@@ -5,7 +5,7 @@ class ClientController
 
     public static function show($id)
     {
-        if ($clientObj = Client::loadById($id)) {
+        if ($clientObj = ClientDAO::loadById($id)) {
             $client = $clientObj->getValues();
 
             $page = new Page;
@@ -25,12 +25,12 @@ class ClientController
 
     public static function destroy($id)
     {
-        Client::delete($id);
+        return ClientDAO::delete($id);
     }
 
     public static function edit($id)
     {
-        if ($clientObj = Client::loadById($id)) {
+        if ($clientObj = ClientDAO::loadById($id)) {
             $client = $clientObj->getValues();
 
 
@@ -43,13 +43,15 @@ class ClientController
 
     public static function update($id, $data)
     {
-        Client::update($id, $data);
+        if ($client = ClientDAO::loadById($id)) {
+            ClientDAO::update($client, $data);
+        }
     }
 
 
     public static function store($data)
     {
-        Client::save($data);
+        ClientDAO::insert($data);
     }
 
     public static function showLogin()
@@ -60,7 +62,7 @@ class ClientController
 
     public static function login($login, $password)
     {
-        return Client::login($login, $password);
+        return ClientDAO::login($login, $password);
     }
 
     public static function verifyClientLogin($id)

@@ -9,7 +9,7 @@ class AdminController
     //list all clients
     public static function showAll()
     {
-        $clients = Client::listAll();
+        $clients = ClientDAO::listAll();
 
         $page = new Page;
         $page->view('admin' . DIRECTORY_SEPARATOR . 'clients', [
@@ -27,12 +27,12 @@ class AdminController
     //login a admin
     public static function login($login, $password)
     {
-        return Admin::login($login, $password);
+        return AdminDAO::login($login, $password);
     }
 
     public static function generateSpreadsheet()
     {
-        $clients = Client::listAll();
+        $clients = ClientDAO::listAll();
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
@@ -99,7 +99,7 @@ class AdminController
                 for ($column = 1; $column <= $higestColumnIndex; $column++) {
                     $data[$keys[$column - 1]] = $sheet->getCellByColumnAndRow($column, $row)->getValue();
                 }
-                Client::save($data);
+                ClientDAO::insert($data);
             }
         }
     }
@@ -125,7 +125,7 @@ class AdminController
                     $i++;
                 }
 
-                Client::save($data);
+                ClientDAO::insert($data);
             }
         }
     }
@@ -138,7 +138,7 @@ class AdminController
 
     public static function sendEmail($subject, $tplName, $data = [])
     {
-        $clients = Client::listAll();
+        $clients = ClientDAO::listAll();
 
         $recipients = [];
         foreach ($clients as $client) {
@@ -179,7 +179,7 @@ class AdminController
     //EDIT A CLIENT INFO
     public static function edit($id)
     {
-        if ($clientObj = Client::loadById($id)) {
+        if ($clientObj = ClientDAO::loadById($id)) {
             $client = $clientObj->getValues();
 
 
@@ -193,7 +193,7 @@ class AdminController
     //SHOW A SPECIFIC CLIENT
     public static function show($id)
     {
-        if ($clientObj = Client::loadById($id)) {
+        if ($clientObj = ClientDAO::loadById($id)) {
             $client = $clientObj->getValues();
 
             $page = new Page;
