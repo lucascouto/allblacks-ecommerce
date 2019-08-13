@@ -2,6 +2,7 @@
 
 use Rain\Tpl;
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class Mailer
 {
@@ -12,7 +13,7 @@ class Mailer
 
     private $mail;
 
-    public function __construct(array $toRecipients, $subject, $tplName, $data = array())
+    public function __construct($subject, $tplName, $data = array())
     {
 
         $config = array(
@@ -30,49 +31,36 @@ class Mailer
 
         $html = $tpl->draw($tplName, true);
 
-        $this->mail = new PHPMailer();
-        //Tell PHPMailer to use SMTP
+        $this->mail = new PHPMailer(true);
         $this->mail->isSMTP();
-        //Enable SMTP debugging
-        // 0 = off (for production use)
-        // 1 = client messages
-        // 2 = client and server messages
-        $this->mail->SMTPDebug = 0;
-        //Ask for HTML-friendly debug output
-        $this->mail->Debugoutput = 'html';
-        //Set the hostname of the mail server
         $this->mail->Host = 'smtp.gmail.com';
-        // use
-        // $this->mail->Host = gethostbyname('smtp.gmail.com');
-        // if your network does not support SMTP over IPv6
-        //Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-        $this->mail->Port = 587;
-        //Set the encryption system to use - ssl (deprecated) or tls
-        $this->mail->SMTPSecure = 'tls';
-        //Whether to use SMTP authentication
         $this->mail->SMTPAuth = true;
-        //Username to use for SMTP authentication - use full email address for gmail
+        $this->mail->SMTPSecure = 'tls';
+        $this->mail->SMTPKeepAlive = true;
+        $this->mail->Port = 587;
         $this->mail->Username = Mailer::USERNAME;
-        //Password to use for SMTP authentication
         $this->mail->Password = Mailer::PASSWORD;
-        //Set who the message is to be sent from
         $this->mail->setFrom(Mailer::USERNAME, Mailer::FROM_NAME);
-        //Set who the message is to be sent to
-        foreach ($toRecipients as $toRcipient) {
-            foreach ($toRcipient as $toAddress => $toName) {
-                $this->mail->addAddress($toAddress, $toName);
-            }
-        }
-
-        //Set the subject line
         $this->mail->Subject = utf8_decode($subject);
-        //Read an HTML message body from an external file, convert referenced images to embedded
         $this->mail->msgHTML($html);
     }
 
-    public function send(): bool
+    public function send(array $toRecipients)
     {
+        foreach ($toRecipients as $toRecipient) {
+            try {
+                $this->mail->addAddress($toRecipient['email'], $toRecipient['name']);
+            } catch (Exception $e) {
+                continue;
+            }
 
-        return $this->mail->send();
+            try {
+                $this->mail->send();
+            } catch (Exception $e) {
+                $this->mail->smtp->reset();
+            }
+            $this->mail->clearAddresses();
+            $this->mail->clearAttachments();
+        }
     }
 }

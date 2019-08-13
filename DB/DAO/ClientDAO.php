@@ -31,7 +31,7 @@ class ClientDAO
         $client->setData($data);
 
         $sql = new Sql;
-        $sql->select('INSERT INTO clients (name, document, zip_code, address, 
+        $sql->query('INSERT INTO clients (name, document, zip_code, address, 
                                 neighborhood, city, state, phone, 
                                 email, active) VALUES (:name, :document, :zip_code, :address, 
                                 :neighborhood, :city, :state, :phone, 
